@@ -1,0 +1,8 @@
+*.secret
+/.idea
+*.iml
+/postgres-data/
+/www-data/
+/nginx/ssl-self/dhparam.pem
+/nginx/ssl-self/self-signed.crt
+/nginx/ssl-self/self-signed.key

@@ -1,0 +1,23 @@
+services:
+  database:
+    image: postgres:15
+    container_name: devt-ala-database
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  gateway:
+    image: nginx
+    container_name: devt-ala-gateway
+    restart: always
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/servers:/etc/nginx/servers:ro
+      - ./nginx/ssl-self/:/etc/nginx/ssl-self:ro
+      - ./www-data:/var/www/devt-ala/data:ro
